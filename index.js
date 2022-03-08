@@ -87,19 +87,22 @@ const promptObject = {
  addEmployeeChoicePrompts: ["Add an Engineer", "Add an Intern", "Finished building team"]
 }
 
-function writeFiles(){
+const writeFiles = () => {
+
     fs.writeFile("./dist/index.html", generateFiles.generateHTML(), (err) =>{
-        (err) ? console.log(err) : console.log(`index.html created successfully!`)
+        (err) ? console.log(err) : console.log(`index.html created!`)
     })
     fs.writeFile("./dist/style.css", generateFiles.generateCSS(), (err) =>{
-        (err) ? console.log(err) : console.log(`style.css created successfully!`)
+        (err) ? console.log(err) : console.log(`style.css created!`)
     })
     fs.writeFile("./dist/script.js", generateFiles.generateScript(), (err) =>{
-        (err) ? console.log(err) : console.log(`script.js created successfully!`)
-    })
+        (err) ? console.log(err) : console.log(`script.js created!`)
+    })  
 }
 
 writeFiles()
+
+
 
 // function init(){
 //     console.log("Code will go here")
