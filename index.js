@@ -5,9 +5,9 @@ const jest = require('jest');
 
 // Custom dependency
 const generateFiles = require('./src/generateFiles');
+const classes = require('./lib/classes');
 
-// Building a series of arrays for inquirer prompts. 
-// Make into a single object??
+// Built an object containing all inquirer prompts
 const promptObject = {
  managerPrompts: [
     {
@@ -78,18 +78,9 @@ const promptObject = {
  addEmployeeChoicePrompts: ["Add an Engineer", "Add an Intern", "Finished building team"]
 }
 
-console.log(promptObject);
+// console.log(promptObject);
 
+function init(){
+    console.log("Code will go here")
+}
 
-
-// ==============
-// Test code to ensure dependcies working as intended. First time use of an arrow function
-// with implicit Return in generateHTML.js
-// function testWrite(){
-    //     fs.writeFile("sample_HTML.html", generateFiles.generateHTML(), (err) => {
-        //         (err) ? console.log(err) : console.log("Callback executed, file created!")
-        //     })
-        // }
-
-// testWrite();
-// ==============
