@@ -1,12 +1,26 @@
+// Dependencies. Jest needed here?
 const inquirer = require('inquirer');
 const fs = require('fs');
 const jest = require('jest');
-const generateHTML = require('./src/generateHTML')
 
-function testWrite(){
-    fs.writeFile("sample_HTML.html", generateHTML.generateHTML(), (err) => {
-        (err) ? console.log(err) : console.log("Callback executed, file created!")
-    })
-}
+// Custom dependencies. Make into one file?
+const generateFiles = require('./src/generateFiles');
 
-testWrite();
+
+
+
+
+
+
+
+// ==============
+// Test code to ensure dependcies working as intended. First time use of an arrow function
+// with implicit Return in generateHTML.js
+// function testWrite(){
+//     fs.writeFile("sample_HTML.html", generateFiles.generateHTML(), (err) => {
+//         (err) ? console.log(err) : console.log("Callback executed, file created!")
+//     })
+// }
+
+// testWrite();
+// ==============

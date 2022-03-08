@@ -12,6 +12,18 @@ const generateHTML = () =>
 </body>
 </html>`
 
+
+// To Do: Template Literal for style.css
+const generateCSS = () => 
+``
+// To Do: Template literal for script.js (If I Go That Route)
+const generateScript = () =>
+``
+
+
+
 module.exports = {
-    generateHTML
+    generateHTML,
+    generateCSS,
+    generateScript
 }
