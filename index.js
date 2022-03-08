@@ -8,10 +8,8 @@ const generateFiles = require('./src/generateFiles');
 
 // Building a series of arrays for inquirer prompts. 
 // Make into a single object??
-// const promptObject = []
-
-
-const managerPrompts = [
+const promptObject = {
+ managerPrompts: [
     {
         type: 'input',
         name: 'name',
@@ -32,8 +30,8 @@ const managerPrompts = [
         name: 'officeNum',
         message: 'Enter the office number of the Team Manager.'
     }
-];
-const engineerPrompts = [
+],
+ engineerPrompts: [
     {
         type: 'input',
         name: 'name',
@@ -54,8 +52,8 @@ const engineerPrompts = [
         name: 'gitHub',
         message: 'Enter the GitHub Profile Name of the Engineer.'
     }
-];
-const internPrompts = [
+],
+ internPrompts: [
     {
         type: 'input',
         name: 'name',
@@ -76,8 +74,12 @@ const internPrompts = [
         name: 'school',
         message: 'Enter the school the Intern is attending.'
     }
-];
-const addEmployeeChoicePrompts = ["Add an Engineer", "Add an Intern", "Finished building team"];
+],
+ addEmployeeChoicePrompts: ["Add an Engineer", "Add an Intern", "Finished building team"]
+}
+
+console.log(promptObject);
+
 
 
 // ==============
