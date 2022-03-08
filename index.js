@@ -14,7 +14,7 @@ const Intern = classes.Intern;
 
 const roster = [];
 
-
+const addEmployeeChoices = ["Add an Engineer", "Add an Intern", "Finished building team"]
 
 // Built an object containing all inquirer prompts
 const promptObject = {
@@ -84,7 +84,16 @@ const promptObject = {
         message: 'Enter the school the Intern is attending.'
     }
 ],
- addEmployeeChoicePrompts: ["Add an Engineer", "Add an Intern", "Finished building team"]
+
+ addEmployeeChoicePrompts: [
+     {
+       type: 'list',
+       name: 'selection',
+       message: 'Add Employee?',
+       choices: addEmployeeChoices
+     }
+    ],     
+ 
 }
 
 const writeFiles = () => {
@@ -100,21 +109,74 @@ const writeFiles = () => {
     })  
 }
 
-writeFiles()
 
 
 
-// function init(){
-//     console.log("Code will go here")
-// }
+function inquireInit(){
+    inquirer.prompt(promptObject.managerPrompts)
+    .then((data) => {
+        roster.push(new Manager(data.name, data.id, data.email, data.officeNum))
+        chooseTeamOption()
+    })
+    .catch((err => {
+        console.log(err)
+    }))
+}
 
-// init()
+function addEngineer(){
+    inquirer.prompt(promptObject.engineerPrompts)
+    .then((data) => {
+        roster.push(new Engineer(data.name, data.id, data.email, data.gitHub))
+        chooseTeamOption()
+    })
+    .catch((err => {
+        console.log(err)
+    }))
+}
+
+function addIntern(){
+    inquirer.prompt(promptObject.internPrompts)
+    .then((data) => {
+        roster.push(new Intern(data.name, data.id, data.email, data.school))
+        chooseTeamOption()
+    })
+    .catch((err => {
+        console.log(err)
+    }))
+}
+
+function chooseTeamOption(){
+    inquirer.prompt(promptObject.addEmployeeChoicePrompts)
+    .then((data) => {
+        if (data.selection === 'Add an Engineer') {
+            addEngineer()
+        } else if (data.selection === 'Add an Intern') {
+            addIntern()
+        } else if (data.selection === 'Finished building team'){
+            console.log(roster)
+        } else (console.log("Something went wrong!"))
+    })
+}
+
+// writeFiles()
+inquireInit()
+// chooseTeamOption()
+
+// const austin = new Manager("Austin","ID01","austinandrews89@gmail.com","Office 01");
+// inquire()
+
+
+
+
+
+
+
+
 
 
 // ============
 // Test code looking for a solution to reading through the array of employees.
 // ============
-// const austin = new Manager("Austin","ID01","austinandrews89@gmail.com","Office 01");
 // const ryan = new Engineer("Ryan","ID02","rwogan@opentable.com","BigRed");
 // const kyle = new Intern("Kyle","ID03","kyle@kyle.org","Denver University");
 // const kevin = new Engineer("Kevin","ID04","klin@opentable.com","Linster");

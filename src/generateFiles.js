@@ -56,13 +56,16 @@ header {
 }`
 
 
-// To Do: Template literal for script.js (If I Go That Route)
+// To Do: Template literal for script.js
 const generateScript = () =>
 ``
+
 const generateManagerDiv = (data) =>
 ``
+
 const generateEngineerDiv = (data) =>
 ``
+
 const generateInternDiv = (data) =>
 ``
 
