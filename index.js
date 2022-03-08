@@ -14,34 +14,12 @@ const Intern = classes.Intern;
 
 const roster = [];
 
-const austin = new Manager("Austin","ID01","austinandrews89@gmail.com","Office 01");
-const ryan = new Engineer("Ryan","ID02","rwogan@opentable.com","BigRed");
-const kyle = new Intern("Kyle","ID03","kyle@kyle.org","Denver University");
-const kevin = new Engineer("Kevin","ID04","klin@opentable.com","Linster");
-const trent = new Engineer("Trent","ID05","tcornwall@opentable.com","TCornwall");
-const maria = new Intern("Maria","ID04","maria@maria.org","Denver University");
-
-roster.push(austin, ryan, kyle, kevin, trent, maria);
-
-// console.log (roster);
-
-for (let i = 0; i < roster.length; i++) {
-    
-    if (roster[i].hasOwnProperty('_officeNumber')){
-        console.log("Manager")
-    } else if (roster[i].hasOwnProperty('_github')){
-        console.log("Engineer")
-    } else if (roster[i].hasOwnProperty('_school')){
-        console.log("Intern")
-    } else (console.log("I didn't read Manager, Engineer, or Intern"))
-    
-}
 
 
 // Built an object containing all inquirer prompts
 const promptObject = {
  managerPrompts: [
-    {
+     {
         type: 'input',
         name: 'name',
         message: 'Enter the name of the Team Manager.'
@@ -109,9 +87,49 @@ const promptObject = {
  addEmployeeChoicePrompts: ["Add an Engineer", "Add an Intern", "Finished building team"]
 }
 
+function writeFiles(){
+    fs.writeFile("./dist/index.html", generateFiles.generateHTML(), (err) =>{
+        (err) ? console.log(err) : console.log(`index.html created successfully!`)
+    })
+    fs.writeFile("./dist/style.css", generateFiles.generateCSS(), (err) =>{
+        (err) ? console.log(err) : console.log(`style.css created successfully!`)
+    })
+    fs.writeFile("./dist/script.js", generateFiles.generateScript(), (err) =>{
+        (err) ? console.log(err) : console.log(`script.js created successfully!`)
+    })
+}
+
+writeFiles()
 
 // function init(){
 //     console.log("Code will go here")
 // }
 
 // init()
+
+
+// ============
+// Test code looking for a solution to reading through the array of employees.
+// ============
+// const austin = new Manager("Austin","ID01","austinandrews89@gmail.com","Office 01");
+// const ryan = new Engineer("Ryan","ID02","rwogan@opentable.com","BigRed");
+// const kyle = new Intern("Kyle","ID03","kyle@kyle.org","Denver University");
+// const kevin = new Engineer("Kevin","ID04","klin@opentable.com","Linster");
+// const trent = new Engineer("Trent","ID05","tcornwall@opentable.com","TCornwall");
+// const maria = new Intern("Maria","ID04","maria@maria.org","Denver University");
+
+// roster.push(austin, ryan, kyle, kevin, trent, maria);
+
+// console.log (roster);
+
+// for (let i = 0; i < roster.length; i++) {
+    
+//     if (roster[i].hasOwnProperty('_officeNumber')){
+//         console.log("Manager")
+//     } else if (roster[i].hasOwnProperty('_github')){
+//         console.log("Engineer")
+//     } else if (roster[i].hasOwnProperty('_school')){
+//         console.log("Intern")
+//     } else (console.log("I didn't read Manager, Engineer, or Intern"))
+    
+// }
