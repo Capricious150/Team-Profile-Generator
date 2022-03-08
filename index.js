@@ -80,7 +80,7 @@ const promptObject = {
 
 // console.log(promptObject);
 
-function init(){
-    console.log("Code will go here")
-}
+// function init(){
+//     console.log("Code will go here")
+// }
 
