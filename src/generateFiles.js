@@ -59,13 +59,18 @@ header {
 // To Do: Template literal for script.js (If I Go That Route)
 const generateScript = () =>
 ``
-const generateDiv = () =>
+const generateManagerDiv = (data) =>
 ``
-
+const generateEngineerDiv = (data) =>
+``
+const generateInternDiv = (data) =>
+``
 
 module.exports = {
     generateHTML,
     generateCSS,
     generateScript,
-    generateDiv
+    generateManagerDiv,
+    generateEngineerDiv,
+    generateInternDiv
 }
