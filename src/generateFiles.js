@@ -120,16 +120,6 @@ header {
 const generateScript = () =>
 `const mainDivEl = $(".mainDiv");`
 
-// const generateManagerDiv = (roster) =>
-// `mainDivEl.append('<div class="employeeCard"><div class="employeeHeader"><h3>${roster[i].Manager._name}</h3><h4>Manager</h4></div><div class="employeeBody"><ul><li>ID: ${roster[i].Manager._id}</li><li><a href="mailto:${roster[i].Manager._email}">${roster[i].Manager._email}</a></li><li>Office Number: ${roster[i].Manager._officeNum}</li></ul></div></div>');`
-
-// const generateEngineerDiv = (roster) =>
-// `mainDivEl.append('<div class="employeeCard"><div class="employeeHeader"><h3>${roster[i].Engineer._name}</h3><h4>Manager</h4></div><div class="employeeBody"><ul><li>ID: ${roster[i].Engineer._id}</li><li><a href="mailto:${roster[i].Engineer._email}">${roster[i].Engineer._email}</a></li><li>GitHub: <a href="https://github.com/${roster[i].Engineer._github}/">${roster[i].Engineer._github}</a></li></ul></div></div>');`
-
-
-// const generateInternDiv = (roster) =>
-// `mainDivEl.append('<div class="employeeCard"><div class="employeeHeader"><h3>${roster[i].Intern._name}</h3><h4>Intern</h4></div><div class="employeeBody"><ul><li>ID: ${roster[i].Intern._id}</li><li><a href="mailto:${roster[i].Intern._email}">${roster[i].Intern._email}</a></li><li>Office Number: ${roster[i].Intern._school}</li></ul></div></div>');`
-
 
 module.exports = {
     generateHTML,

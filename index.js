@@ -160,12 +160,15 @@ function buildTeam(){
     for (let i = 0; i < roster.length; i++) {
     
         if (roster[i].hasOwnProperty('_officeNumber')){
-            fs.appendFileSync("./dist/script.js", '\n' + `mainDivEl.append('<div class="employeeCard"><div class="employeeHeader"><h3>${roster[i]._name}</h3><h4>Manager</h4></div><div class="employeeBody"><ul><li>ID: ${roster[i]._id}</li><li><a href="mailto:${roster[i]._email}">${roster[i]._email}</a></li><li>Office Number: ${roster[i]._officeNum}</li></ul></div></div>');`)
-        } else if (roster[i].hasOwnProperty('_github')){
-            fs.appendFileSync("./dist/script.js", '\n' + `mainDivEl.append('<div class="employeeCard"><div class="employeeHeader"><h3>${roster[i]._name}</h3><h4>Manager</h4></div><div class="employeeBody"><ul><li>ID: ${roster[i]._id}</li><li><a href="mailto:${roster[i]._email}">${roster[i]._email}</a></li><li>GitHub: <a href="https://github.com/${roster[i]._github}/">${roster[i]._github}</a></li></ul></div></div>');`)
-        } else if (roster[i].hasOwnProperty('_school')){
-            fs.appendFileSync("./dist/script.js", '\n' + `mainDivEl.append('<div class="employeeCard"><div class="employeeHeader"><h3>${roster[i]._name}</h3><h4>Intern</h4></div><div class="employeeBody"><ul><li>ID: ${roster[i]._id}</li><li><a href="mailto:${roster[i]._email}">${roster[i]._email}</a></li><li>Office Number: ${roster[i]._school}</li></ul></div></div>');`)
-        } else (console.log("I didn't read Manager, Engineer, or Intern"))
+            fs.appendFileSync("./dist/script.js", `\n mainDivEl.append('<div class="employeeCard"><div class="employeeHeader"><h3>${roster[i]._name}</h3><h4>Manager</h4></div><div class="employeeBody"><ul><li>ID: ${roster[i]._id}</li><li><a href="mailto:${roster[i]._email}">${roster[i]._email}</a></li><li>Office Number: ${roster[i]._officeNumber}</li></ul></div></div>');`)
+        } 
+        else if (roster[i].hasOwnProperty('_github')){
+            fs.appendFileSync("./dist/script.js", `\n mainDivEl.append('<div class="employeeCard"><div class="employeeHeader"><h3>${roster[i]._name}</h3><h4>Engineer</h4></div><div class="employeeBody"><ul><li>ID: ${roster[i]._id}</li><li><a href="mailto:${roster[i]._email}">${roster[i]._email}</a></li><li>GitHub: <a href="https://github.com/${roster[i]._github}/">${roster[i]._github}</a></li></ul></div></div>');`)
+        } 
+        else if (roster[i].hasOwnProperty('_school')){
+            fs.appendFileSync("./dist/script.js", `\n mainDivEl.append('<div class="employeeCard"><div class="employeeHeader"><h3>${roster[i]._name}</h3><h4>Intern</h4></div><div class="employeeBody"><ul><li>ID: ${roster[i]._id}</li><li><a href="mailto:${roster[i]._email}">${roster[i]._email}</a></li><li>Office Number: ${roster[i]._school}</li></ul></div></div>');`)
+        } 
+        else (console.log("I didn't read Manager, Engineer, or Intern"))
         
     }
 
