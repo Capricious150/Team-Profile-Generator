@@ -6,6 +6,7 @@ const jest = require('jest');
 // Custom dependency
 const generateFiles = require('./src/generateFiles');
 const classes = require('./lib/classes');
+const { appendFileSync } = require('fs');
 
 const Employee = classes.Employee;
 const Manager = classes.Manager;
@@ -98,15 +99,10 @@ const promptObject = {
 
 const writeFiles = () => {
 
-    fs.writeFile("./dist/index.html", generateFiles.generateHTML(), (err) =>{
-        (err) ? console.log(err) : console.log(`index.html created!`)
-    })
-    fs.writeFile("./dist/style.css", generateFiles.generateCSS(), (err) =>{
-        (err) ? console.log(err) : console.log(`style.css created!`)
-    })
-    fs.writeFile("./dist/script.js", generateFiles.generateScript(), (err) =>{
-        (err) ? console.log(err) : console.log(`script.js created!`)
-    })  
+    fs.writeFileSync("./dist/index.html", generateFiles.generateHTML())
+    fs.writeFileSync("./dist/style.css", generateFiles.generateCSS())
+    fs.writeFileSync("./dist/script.js", generateFiles.generateScript())  
+    inquireInit()
 }
 
 
@@ -153,13 +149,42 @@ function chooseTeamOption(){
         } else if (data.selection === 'Add an Intern') {
             addIntern()
         } else if (data.selection === 'Finished building team'){
-            console.log(roster)
+            buildTeam()
         } else (console.log("Something went wrong!"))
     })
 }
 
+
+function buildTeam(){
+
+    for (let i = 0; i < roster.length; i++) {
+    
+        if (roster[i].hasOwnProperty('_officeNumber')){
+            fs.appendFileSync("./dist/script.js", "\n" + generateFiles.generateManagerDiv())
+        } else if (roster[i].hasOwnProperty('_github')){
+            fs.appendFileSync("./dist/script.js", "\n" + generateFiles.generateEngineerDiv())
+        } else if (roster[i].hasOwnProperty('_school')){
+            fs.appendFileSync("./dist/script.js", "\n" + generateFiles.generateInternDiv())
+        } else (console.log("I didn't read Manager, Engineer, or Intern"))
+        
+    }
+
+}
+
+
+
+
+
+    generateManagerDiv,
+    generateEngineerDiv,
+    generateInternDiv
+
+
+
+
+
 // writeFiles()
-inquireInit()
+// inquireInit()
 // chooseTeamOption()
 
 // const austin = new Manager("Austin","ID01","austinandrews89@gmail.com","Office 01");
@@ -187,14 +212,3 @@ inquireInit()
 
 // console.log (roster);
 
-// for (let i = 0; i < roster.length; i++) {
-    
-//     if (roster[i].hasOwnProperty('_officeNumber')){
-//         console.log("Manager")
-//     } else if (roster[i].hasOwnProperty('_github')){
-//         console.log("Engineer")
-//     } else if (roster[i].hasOwnProperty('_school')){
-//         console.log("Intern")
-//     } else (console.log("I didn't read Manager, Engineer, or Intern"))
-    
-// }
