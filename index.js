@@ -1,18 +1,21 @@
-// Dependencies. Jest needed here?
+// Dependencies
 const inquirer = require('inquirer');
 const fs = require('fs');
-const jest = require('jest');
 
-// Custom dependency
+// Custom dependencies
 const generateFiles = require('./src/generateFiles');
 const classes = require('./lib/classes');
 
+// My classes are all housed in a single library which exports an object
+// So I set up 3 constants for all those objects
 const Manager = classes.Manager;
 const Engineer = classes.Engineer;
 const Intern = classes.Intern;
 
+// Empty roster which will house all employees
 const roster = [];
 
+// Small array which will be used for the main menu prompt later 
 const addEmployeeChoices = ["Add an Engineer", "Add an Intern", "Finished building team"]
 
 // Built an object containing all inquirer prompts
@@ -95,6 +98,9 @@ const promptObject = {
  
 }
 
+// I approached my code using modular functions. This first one kicks everything off,
+// It uses writeFileSync to ensure each file is written before proceeding, and then kicks off
+// inquireInit
 const writeFiles = () => {
     fs.writeFileSync("./dist/index.html", generateFiles.generateHTML())
     fs.writeFileSync("./dist/style.css", generateFiles.generateCSS())
@@ -102,9 +108,8 @@ const writeFiles = () => {
     inquireInit()
 }
 
-
-
-
+// Build the team manager and push the output to the roster array.
+// Then go to the main menu
 function inquireInit(){
     inquirer.prompt(promptObject.managerPrompts)
     .then((data) => {
@@ -116,6 +121,7 @@ function inquireInit(){
     }))
 }
 
+// Small function for when an engineer is being added. Functions identically to inquireInit
 function addEngineer(){
     inquirer.prompt(promptObject.engineerPrompts)
     .then((data) => {
@@ -127,6 +133,7 @@ function addEngineer(){
     }))
 }
 
+// Small function for when an intern is being added. Functions identically to inquireInit
 function addIntern(){
     inquirer.prompt(promptObject.internPrompts)
     .then((data) => {
@@ -138,6 +145,8 @@ function addIntern(){
     }))
 }
 
+// Small function which acts as a main menu. Depending on the user selection, will either
+// fire off addEngineer, addIntern, or go to the final builtTeam function
 function chooseTeamOption(){
     inquirer.prompt(promptObject.addEmployeeChoicePrompts)
     .then((data) => {
@@ -152,7 +161,10 @@ function chooseTeamOption(){
     })
 }
 
-
+// This ugly little function iterates through the roster loop, using ".hasOwnProperty()" to
+// determine whether it's looking at a manager, engineer, or intern (as the role isn't part of those objects).
+// Once it figures out which it's looking at, it appends a line of javascript to script.js
+// which dynamically populates index.html using JQuery
 function buildTeam(){
     console.log(roster);
     for (let i = 0; i < roster.length; i++) {
@@ -172,5 +184,6 @@ function buildTeam(){
 
 }
 
-
+// With all my variables and functions declared, all that remains is to fire off the writeFiles()
+// function, which cascades  into the others!
 writeFiles()
