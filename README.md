@@ -2,7 +2,7 @@
   ![License Badge for MIT license](https://img.shields.io/badge/license-MIT-blue)
 
   ## Links and Images
-  [Link to Demo Video](https://drive.google.com/file/d/1P_fh25E1lSD1our1XYyOHm3LISPv-eHP/view)
+  [Link to Demo Video](https://drive.google.com/file/d/1msY1AZ_ROD4EqxrOy6yUBIBAp_UHws8J/view)
   ![An image of a small team roster with 4 members](/Assets/PagePreview.png)
   ![An image of some of the application prompts in terminal](/Assets/TerminalPreview.png)
 
