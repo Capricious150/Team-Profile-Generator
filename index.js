@@ -6,9 +6,7 @@ const jest = require('jest');
 // Custom dependency
 const generateFiles = require('./src/generateFiles');
 const classes = require('./lib/classes');
-const { appendFileSync } = require('fs');
 
-const Employee = classes.Employee;
 const Manager = classes.Manager;
 const Engineer = classes.Engineer;
 const Intern = classes.Intern;
@@ -156,14 +154,14 @@ function chooseTeamOption(){
 
 
 function buildTeam(){
-
+    console.log(roster);
     for (let i = 0; i < roster.length; i++) {
     
         if (roster[i].hasOwnProperty('_officeNumber')){
             fs.appendFileSync("./dist/script.js", `\n mainDivEl.append('<div class="employeeCard"><div class="employeeHeader"><h3>${roster[i]._name}</h3><h4>Manager</h4></div><div class="employeeBody"><ul><li>ID: ${roster[i]._id}</li><li><a href="mailto:${roster[i]._email}">${roster[i]._email}</a></li><li>Office Number: ${roster[i]._officeNumber}</li></ul></div></div>');`)
         } 
         else if (roster[i].hasOwnProperty('_github')){
-            fs.appendFileSync("./dist/script.js", `\n mainDivEl.append('<div class="employeeCard"><div class="employeeHeader"><h3>${roster[i]._name}</h3><h4>Engineer</h4></div><div class="employeeBody"><ul><li>ID: ${roster[i]._id}</li><li><a href="mailto:${roster[i]._email}">${roster[i]._email}</a></li><li>GitHub: <a href="https://github.com/${roster[i]._github}/">${roster[i]._github}</a></li></ul></div></div>');`)
+            fs.appendFileSync("./dist/script.js", `\n mainDivEl.append('<div class="employeeCard"><div class="employeeHeader"><h3>${roster[i]._name}</h3><h4>Engineer</h4></div><div class="employeeBody"><ul><li>ID: ${roster[i]._id}</li><li><a href="mailto:${roster[i]._email}">${roster[i]._email}</a></li><li>GitHub: <a href="https://github.com/${roster[i]._github}/" target="_blank">${roster[i]._github}</a></li></ul></div></div>');`)
         } 
         else if (roster[i].hasOwnProperty('_school')){
             fs.appendFileSync("./dist/script.js", `\n mainDivEl.append('<div class="employeeCard"><div class="employeeHeader"><h3>${roster[i]._name}</h3><h4>Intern</h4></div><div class="employeeBody"><ul><li>ID: ${roster[i]._id}</li><li><a href="mailto:${roster[i]._email}">${roster[i]._email}</a></li><li>Office Number: ${roster[i]._school}</li></ul></div></div>');`)
@@ -176,42 +174,3 @@ function buildTeam(){
 
 
 writeFiles()
-
-
-    // generateManagerDiv,
-    // generateEngineerDiv,
-    // generateInternDiv
-
-
-
-
-
-// writeFiles()
-// inquireInit()
-// chooseTeamOption()
-
-// const austin = new Manager("Austin","ID01","austinandrews89@gmail.com","Office 01");
-// inquire()
-
-
-
-
-
-
-
-
-
-
-// ============
-// Test code looking for a solution to reading through the array of employees.
-// ============
-// const ryan = new Engineer("Ryan","ID02","rwogan@opentable.com","BigRed");
-// const kyle = new Intern("Kyle","ID03","kyle@kyle.org","Denver University");
-// const kevin = new Engineer("Kevin","ID04","klin@opentable.com","Linster");
-// const trent = new Engineer("Trent","ID05","tcornwall@opentable.com","TCornwall");
-// const maria = new Intern("Maria","ID04","maria@maria.org","Denver University");
-
-// roster.push(austin, ryan, kyle, kevin, trent, maria);
-
-// console.log (roster);
-
